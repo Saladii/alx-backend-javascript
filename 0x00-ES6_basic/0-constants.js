@@ -1,35 +1,15 @@
-module.exports = {
-    env: {
-      browser: false,
-      es6: true,
-      jest: true,
-    },
-    extends: [
-      'airbnb-base',
-      'plugin:jest/all',
-    ],
-    globals: {
-      Atomics: 'readonly',
-      SharedArrayBuffer: 'readonly',
-    },
-    parserOptions: {
-      ecmaVersion: 2018,
-      sourceType: 'module',
-    },
-    plugins: ['jest'],
-    rules: {
-      'no-console': 'off',
-      'no-shadow': 'off',
-      'no-restricted-syntax': [
-        'error',
-        'LabeledStatement',
-        'WithStatement',
-      ],
-    },
-    overrides:[
-      {
-        files: ['*.js'],
-        excludedFiles: 'babel.config.js',
-      }
-    ]
-  };
+export function taskFirst() {
+  const task = 'I prefer const when I can.';
+  return task;
+}
+
+export function getLast() {
+  return ' is okay';
+}
+
+export function taskNext() {
+  let combination = 'But sometimes let';
+  combination += getLast();
+
+  return combination;
+}
