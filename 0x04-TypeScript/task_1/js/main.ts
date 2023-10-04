@@ -1,39 +1,39 @@
-export interface Student {
-    firstName: string,
-    lastName: string,
-    age: number,
-    location: string
+/* Task 1 */
+export interface Teacher {
+    firstName:string,
+    lastName:string,
+    fullTimeEmployee:boolean,
+    yearsOfExperience?:number,
+    location:string,
+    [propName : string] : any;
 }
 
-const student_1: Student = {
-    firstName : 'Mike',
-    lastName : 'Dean',
-    age : 23,
-    location : 'San Francisco'
+/* Task 2 */
+export interface Directors extends Teacher {
+    numberOfReports : number
 }
 
-const student_2: Student = {
-    firstName : 'Alfred',
-    lastName : 'Bean',
-    age : 35,
-    location : 'San Francisco'
+/* Task 3 */
+function printTeacher(firstName:string, lastName:string) {
+    return `${firstName[0]}. ${lastName}`;
 }
 
-const studentsList = [ student_1, student_2 ];
+/* Task 4 */
+export interface StudentClassInterface {
+    firstName : string,
+    lastName : string,
+    workOnHomework() : string,
+    displayName() : string
+}
 
-const tbl = document.createElement('table');
-const bdy = document.createElement('tbody');
+export class StudentClass implements StudentClassInterface{
+    constructor(public firstName:string, public lastName:string) {}
 
-studentsList.forEach((std) => {
-    const rw = document.createElement('tr');
-    const fname = document.createElement('td');
-    const lc = document.createElement('td');
-    fname.textContent = std.firstName;
-    lc.textContent = std.location;
-    rw.appendChild(fname);
-    rw.appendChild(lc);
-    bdy.appendChild(rw);
-});
+    workOnHomework() {
+        return 'Currently working';
+    }
 
-tbl.appendChild(bdy);
-document.body.appendChild(tbl);
+    displayName() {
+        return `${this.firstName}`;
+    }
+}
